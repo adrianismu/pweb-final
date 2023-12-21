@@ -1,0 +1,67 @@
+﻿@page
+@model CAMPUSMART.Pages.Admin.Products.IndexModel
+@{
+}
+
+<h2 class="text-center mb-5">List of Products</h2>
+
+<div class="mb-5">
+    <div class="col">
+        <a class="btn btn-primary" href="/Admin/Products/Create">New Product</a>
+    </div>
+    <div class="col">
+        <!-- Tambahkan navigasi atau fitur lainnya di sini jika diperlukan -->
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Created At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Brand</td>
+                <td>@product.Category</td>
+                <td>@product.Price</td>
+                <td><img src="/products/@product.ImageFileName" width="100" /></td>
+                <td>@product.CreatedAt.ToString("MM/dd/yyyy")</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" href="/Admin/Products/Edit?id=@product.Id">Edit</a>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation_@product.Id">Delete</button>
+
+                    <!-- Modal untuk konfirmasi penghapusan -->
+                    <div class="modal fade" id="deleteConfirmation_@product.Id" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel_@product.Id" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteConfirmationLabel_@product.Id">Confirm Deletion</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this product?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <a class="btn btn-danger" href="/Admin/Products/Delete?id=@product.Id">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
