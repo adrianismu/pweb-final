@@ -7,15 +7,17 @@
 
 <div class="mb-5">
     <div class="col">
+        <!-- Link to create a new product -->
         <a class="btn btn-primary" href="/Admin/Products/Create">New Product</a>
     </div>
     <div class="col">
-        <!-- Tambahkan navigasi atau fitur lainnya di sini jika diperlukan -->
+        <!-- Additional navigation or features can be added here if needed -->
     </div>
 </div>
 
 <table class="table">
     <thead>
+        <!-- Table headers for product attributes -->
         <tr>
             <th>ID</th>
             <th>Brand</th>
@@ -27,9 +29,11 @@
         </tr>
     </thead>
     <tbody>
+        <!-- Loop through each product to display in the table -->
         @foreach (var product in Model.products)
         {
             <tr>
+                @* Display product details in each table cell *@ 
                 <td>@product.Name</td>
                 <td>@product.Brand</td>
                 <td>@product.Category</td>
@@ -37,10 +41,13 @@
                 <td><img src="/products/@product.ImageFileName" width="100" /></td>
                 <td>@product.CreatedAt.ToString("MM/dd/yyyy")</td>
                 <td style="white-space:nowrap">
+                @*    <!-- Edit button to navigate to edit page for the product --> *@
                     <a class="btn btn-primary btn-sm" href="/Admin/Products/Edit?id=@product.Id">Edit</a>
+
+                  @*  <!-- Button to trigger the delete confirmation modal --> *@
                     <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation_@product.Id">Delete</button>
 
-                    <!-- Modal untuk konfirmasi penghapusan -->
+      @*              <!-- Modal for delete confirmation --> *@
                     <div class="modal fade" id="deleteConfirmation_@product.Id" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel_@product.Id" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -54,7 +61,10 @@
                                     Are you sure you want to delete this product?
                                 </div>
                                 <div class="modal-footer">
+                                   @* <!-- Cancel button to close the modal --> *@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    
+                                   @* <!-- Delete button to trigger the delete action --> *@
                                     <a class="btn btn-danger" href="/Admin/Products/Delete?id=@product.Id">Delete</a>
                                 </div>
                             </div>

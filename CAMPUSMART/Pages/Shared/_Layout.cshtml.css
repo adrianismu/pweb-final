@@ -1,34 +1,39 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+/* Styling for the navbar brand */
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
+/* Default link styles */
 a {
   color: #0077cc;
 }
 
+/* Button and navbar link transitions on hover */
 .btn-primary,
 a.nav-link {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Button and navbar link hover styles */
 .btn-primary:hover,
 a.nav-link:hover {
     color: #fff;
     background-color: #007bff; 
 }
 
-
+/* Active link styles for nav pills */
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
+/* Border styles */
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
@@ -36,17 +41,20 @@ a.nav-link:hover {
   border-bottom: 1px solid #e5e5e5;
 }
 
+/* Box shadow styles */
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+/* Button styles */
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
 }
 
+/* Footer styles */ 
 .footer {
-    position: absolute;
+    position: absolute; 
     bottom: 0;
     width: 100%;
     white-space: nowrap;
@@ -54,27 +62,30 @@ button.accept-policy {
     transition: transform 0.3s ease;
 }
 
+/* Footer hover effect */
 .footer:hover {
-    transform: translateY(-5px); /* Ubah nilai dan arah sesuai preferensi */
+    transform: translateY(-5px); /* Change the value and direction as per preference */
 }
 
+/* Main content styles */
 main {
     transition: transform 0.3s ease;
 }
 
+/* Main content hover effect */
 main:hover {
-    transform: scale(1.02); /* Ubah nilai transform sesuai preferensi */
+    transform: scale(1.02); /* Change the transform value as per preference */
 }
 
+/* Dropdown menu styles */
 .dropdown-menu {
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+/* Dropdown menu visibility on hover */
 .nav-item.dropdown:hover .dropdown-menu {
     opacity: 1;
     transform: translateY(0);
 }
-
-

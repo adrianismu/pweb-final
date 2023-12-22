@@ -13,21 +13,30 @@ using Microsoft.Extensions.Logging;
 
 namespace CAMPUSMART.Areas.Identity.Pages.Account
 {
+    // LogoutModel represents the Razor Page for user logout.
+    [AllowAnonymous] // Allows unauthenticated access to this page.
     public class LogoutModel : PageModel
     {
-        private readonly SignInManager<CAMPUSMARTUser> _signInManager;
-        private readonly ILogger<LogoutModel> _logger;
+        private readonly SignInManager<CAMPUSMARTUser> _signInManager; // Manages user sign-in and sign-out.
+        private readonly ILogger<LogoutModel> _logger; // Logger for logging user logout events.
 
+        // Constructor for LogoutModel, injecting dependencies.
         public LogoutModel(SignInManager<CAMPUSMARTUser> signInManager, ILogger<LogoutModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
         }
 
+        // Handles the HTTP POST request for user logout.
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
+            // Sign out the user.
             await _signInManager.SignOutAsync();
+
+            // Log information about the user logout.
             _logger.LogInformation("User logged out.");
+
+            // If a return URL is provided, redirect to that URL.
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);

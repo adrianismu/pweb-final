@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
 namespace CAMPUSMART.Pages
 {
@@ -12,9 +13,10 @@ namespace CAMPUSMART.Pages
             _logger = logger;
         }
 
+        // Handles GET requests to this page
         public void OnGet()
         {
-
+            // Add logic here to handle actions when the page loads
         }
     }
 }

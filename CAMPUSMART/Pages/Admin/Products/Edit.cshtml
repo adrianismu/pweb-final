@@ -1,6 +1,7 @@
 ﻿@page
 @model CAMPUSMART.Pages.Admin.Products.EditModel
 @{
+    // Razor page directive and model declaration
 }
 
 <div class="row">
@@ -9,6 +10,7 @@
 
         @if (Model.errorMessage.Length > 0)
         {
+         //   <!-- Display an alert for error message if present -->
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>@Model.errorMessage</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -18,6 +20,7 @@
         }
         else if (Model.successMessage.Length > 0)
         {
+            // <!-- Display an alert for success message if present -->
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>@Model.successMessage</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -26,8 +29,9 @@
             </div>
         }
 
-
         <form method="post" enctype="multipart/form-data">
+            <!-- Input fields for editing product details -->
+            <!-- ID Field -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">ID</label>
                 <div class="col-sm-8">
@@ -75,34 +79,41 @@
                 </div>
             </div>
 
+           <!-- Image Display -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-8">
+                    <!-- Display the current image of the product -->
                     <img src="/products/@Model.Product.ImageFileName" width="150" />
                 </div>
             </div>
 
+            <!-- Image Field for Uploading -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Image</label>
                 <div class="col-sm-8">
+                    <!-- Input field to upload a new image -->
                     <input type="file" class="form-control" asp-for="ProductDto.ImageFile" />
                     <span asp-validation-for="ProductDto.ImageFile" class="text-danger"></span>
                 </div>
             </div>
 
-
+            <!-- Read-only field for Created At -->
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Created At</label>
                 <div class="col-sm-8">
+                    <!-- Display the creation date of the product -->
                     <input readonly class="form-control-plaintext" value="@Model.Product.CreatedAt.ToString("MM/dd/yyyy")" />
                 </div>
             </div>
 
+            <!-- Buttons for form submission and cancellation -->
             <div class="row mb-3">
                 <div class="offset-sm-4 col-sm-4 d-grid">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 <div class="col-sm-4 d-grid">
+                    <!-- Button to cancel and return to product index -->
                     <a class="btn btn-outline-danger" href="/Admin/Products/Index" role="button">Cancel</a>
                 </div>
             </div>
